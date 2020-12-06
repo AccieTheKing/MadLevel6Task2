@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        val gridLayoutManager = GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
+        val gridLayoutManager = GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
         movieAdapter = MovieAdapter(movies, ::onSeeMovieDetails)
         rvMovies.layoutManager = gridLayoutManager
         rvMovies.adapter = movieAdapter
