@@ -2,6 +2,7 @@ package com.example.madlevel6task2.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.madlevel6task2.BuildConfig
 import com.example.madlevel6task2.api.MovieApi
 import com.example.madlevel6task2.models.Movie
 import com.example.madlevel6task2.services.MovieServices
@@ -12,9 +13,10 @@ class MovieRepository {
 
     val movies: LiveData<List<Movie>> get() = _movies
 
-    suspend fun getAllMovies() {
+    suspend fun getAllMovies(movieYear: Int) {
         try {
-            val result = movieService.getMovies()
+            val result =
+                movieService.getMovies(api_key = BuildConfig.MOVIE_API_KEY, movieYear = movieYear)
             _movies.value = result
         } catch (error: Throwable) {
             throw  MovieApiError("Movie fetching error", error)

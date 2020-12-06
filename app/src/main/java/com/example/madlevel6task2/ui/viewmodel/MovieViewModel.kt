@@ -15,10 +15,10 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
     val success = MutableLiveData<Boolean>()
     val movies = movieRepository.movies
 
-    fun getMovies() {
+    fun getMovies(movieYear: Int) {
         viewModelScope.launch {
             try {
-                movieRepository.getAllMovies()
+                movieRepository.getAllMovies(movieYear)
                 success.value = true
             } catch (error: MovieRepository.MovieApiError) {
                 _errorText.value = error.message

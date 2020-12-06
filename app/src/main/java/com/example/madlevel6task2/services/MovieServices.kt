@@ -7,5 +7,8 @@ import retrofit2.http.Query
 
 interface MovieServices {
     @GET("/movie")
-    suspend fun getMovies(@Query("api_key") api_key: String = BuildConfig.MOVIE_API_KEY): List<Movie>
+    suspend fun getMovies(
+        @Query("api_key") api_key: String,
+        @Query("year") movieYear: Int
+    ): List<Movie>
 }
