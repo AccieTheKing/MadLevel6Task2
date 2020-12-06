@@ -8,6 +8,6 @@ interface MovieServices {
     @GET("/3/discover/movie")
     suspend fun getMovies(
         @Query("api_key") api_key: String,
-        @Query("year") movieYear: Int
+        @Query("primary_release_year") movieYear: Int
     ): MovieResponse
 }
