@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MovieApi {
     companion object {
         // The base url off the api.
-        private const val baseUrl = "https://api.themoviedb.org/3/discover/"
+        private const val baseUrl = "https://api.themoviedb.org/"
 
         fun createApi(): MovieServices {
             // Create an OkHttpClient to be able to make a log of the network traffic
