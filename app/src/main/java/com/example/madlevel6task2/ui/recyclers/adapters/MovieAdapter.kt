@@ -38,7 +38,7 @@ class MovieAdapter(private val movies: List<Movie>, private val onClick: (Movie)
         }
 
         fun bind(movie: Movie) {
-            itemView.movieItemID.text = movie.id
+            itemView.movieItemID.text = (adapterPosition + 1).toString()
             Glide.with(itemView.context)
                 .load(String.format("https://image.tmdb.org/t/p/original/%s", movie.poster_path))
                 .into(itemView.movieItemImage)
