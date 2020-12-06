@@ -5,13 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import com.example.madlevel6task2.BuildConfig
 import com.example.madlevel6task2.api.MovieApi
 import com.example.madlevel6task2.models.Movie
+import com.example.madlevel6task2.models.MovieResponse
 import com.example.madlevel6task2.services.MovieServices
 
 class MovieRepository {
     private val movieService: MovieServices = MovieApi.createApi()
-    private val _movies: MutableLiveData<List<Movie>> = MutableLiveData()
+    private val _movies: MutableLiveData<MovieResponse> = MutableLiveData()
 
-    val movies: LiveData<List<Movie>> get() = _movies
+    val movies: LiveData<MovieResponse> get() = _movies
 
     suspend fun getAllMovies(movieYear: Int) {
         try {
