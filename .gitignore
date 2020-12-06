@@ -15,3 +15,5 @@
 local.properties
 
 .idea/
+
+app/src/main/java/com/example/madlevel6task2/apikey.properties
