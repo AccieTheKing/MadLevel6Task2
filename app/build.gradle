@@ -5,7 +5,12 @@ plugins {
     id 'kotlin-kapt'
 }
 
+
 android {
+    def apikeyPropertiesFile = rootProject.file("app/src/main/java/com/example/madlevel6task2/apikey.properties")
+    def apikeyProperties = new Properties()
+    apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
@@ -17,6 +22,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "MOVIE_API_KEY", apikeyProperties['THE_MOVIE_API_KEY'])
     }
 
     buildTypes {
