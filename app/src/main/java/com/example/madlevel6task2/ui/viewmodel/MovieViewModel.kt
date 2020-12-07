@@ -14,6 +14,7 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
 
     val success = MutableLiveData<Boolean>()
     val movies = movieRepository.movies
+    val movie = movieRepository.movie
 
     fun getMovies(movieYear: Int) {
         viewModelScope.launch {
@@ -23,7 +24,20 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
             } catch (error: MovieRepository.MovieApiError) {
                 _errorText.value = error.message
                 success.value = false
-                Log.e("Getting products error", error.cause.toString())
+                Log.e("Getting movies error", error.cause.toString())
+            }
+        }
+    }
+
+    fun getMovie(movieID: Int) {
+        viewModelScope.launch {
+            try {
+                movieRepository.getMovie(movieID)
+                success.value = true
+            } catch (error: MovieRepository.MovieApiError) {
+                _errorText.value = error.message
+                success.value = false
+                Log.e("Getting movie error", error.cause.toString())
             }
         }
     }
