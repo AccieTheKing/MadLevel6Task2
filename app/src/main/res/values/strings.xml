@@ -3,4 +3,6 @@
     <string name="home_screen_text">The most popular movies of</string>
     <string name="year">Year</string>
     <string name="txtSubmit">Submit</string>
+    <string name="txtValueOverview">Overview</string>
+    <string name="action_settings">Menu item</string>
 </resources>
