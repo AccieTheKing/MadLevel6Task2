@@ -60,13 +60,11 @@ class MoviesFragment : Fragment() {
     }
 
     private fun onSeeMovieDetails(movie: Movie) {
-        parentFragmentManager.setFragmentResult(
-            MOVIE_KEY,
-            bundleOf(Pair(MOVIE_BUNDLE_KEY, movie.id))
-        )
+        val testBundle = bundleOf(Pair(MOVIE_BUNDLE_KEY, movie.id))
 
         findNavController().navigate(
-            R.id.action_FirstFragment_to_SecondFragment,
+            R.id.action_FirstFragment_to_SecondFragment, testBundle
         )
+
     }
 }

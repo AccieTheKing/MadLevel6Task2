@@ -15,6 +15,11 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
     val success = MutableLiveData<Boolean>()
     val movies = movieRepository.movies
     val movie = movieRepository.movie
+    val movieID = MutableLiveData<Int>()
+
+    fun setMovieId(id: Int) {
+        movieID.value = id
+    }
 
     fun getMovies(movieYear: Int) {
         viewModelScope.launch {

@@ -19,7 +19,7 @@ class MovieRepository {
     suspend fun getMovie(movieID: Int) {
         try {
             val result =
-                movieService.getMovie( movie_id = movieID)
+                movieService.getMovie(movie_id = movieID)
             _movie.value = result
         } catch (error: Throwable) {
             throw  MovieApiError("Movie fetching error", error)

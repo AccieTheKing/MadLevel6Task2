@@ -29,21 +29,20 @@ class MovieDetailFragment : Fragment() {
 
 
     private fun observeAddReminderResult() {
-        parentFragmentManager.setFragmentResultListener(
-            MOVIE_KEY,
-            viewLifecycleOwner
-        ) { key, bundle ->
-            bundle.getString(MOVIE_BUNDLE_KEY)?.let {
-                var movieID = it.toInt()
-                viewModel.getMovie(movieID)
+        arguments?.let {
+            val movieId = it.getString(MOVIE_BUNDLE_KEY)
+            if (movieId != null) {
+                val id = movieId.toInt()
+                viewModel.getMovie(id)
             }
         }
+
     }
 
     private fun observeMovie() {
         viewModel.movie.observe(viewLifecycleOwner, {
             context?.let { it1 ->
-                val imageSource ="https://image.tmdb.org/t/p/original/%s";
+                val imageSource = "https://image.tmdb.org/t/p/original/%s";
                 Glide.with(it1)
                     .load(String.format(imageSource, it.backdrop_path))
                     .into(backdropImage)
